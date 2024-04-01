@@ -22,6 +22,20 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
 var markerPos = new kakao.maps.LatLng(33.450701, 126.570667);
+var marker = new kakao.maps.Marker({
+    position:markerPos
+});
+function setCenter(lat, lng)
+{
+    marker.setMap(null); //마커 지움
+    var mp = new kakao.maps.LatLng(lat,lng);
+    map.setCenter(mp);
+    marker = new kakao.maps.Marker({position:mp});
+    marker.setMap(map);
+}
+
+/*  
+var markerPos = new kakao.maps.LatLng(33.450701, 126.570667);
 var marker = new kakao.maps.marker({
   position:markerPos
 });
@@ -33,7 +47,7 @@ function setCenter(lat, lng)
   marker = new kakao.maps.Marker({position:map});
   marker.setMap(map);
 }
-  
+*/  
 
   
 </script>
