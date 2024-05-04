@@ -22,19 +22,24 @@ var projection = d3.geoMercator()
     .scale(150)                       // This is like the zoom
     .translate([ width/2, height/2 ])
 
-var dataSet = "homelat,homelon,homecontinent,n\n38.9,-77.1,North America,51\n52.5,13.3,Europe,12";
+//var dataSet = "homelat,homelon,homecontinent,n\n38.9,-77.1,North America,51\n52.5,13.3,Europe,12";
 //var dataSet = "homelat,homelon,homecontinent,n 38.9,-77.1,North America,51 52.5,13.3,Europe,12";  
 //var dataSet = "homelat,homelon,homecontinent,n\t38.9,-77.1,North\tAmerica,51 52.5,13.3,Europe,12";    
-//var dataSet = "homelat,homelon,homecontinent,n
-//38.9,-77.1,North America,51
-//52.5,13.3,Europe,12";  
+var csvString = `homelat,homelon,homecontinent,n
+38.9,-77.1,North America,51
+52.5,13.3,Europe,12`;  
+
+// Parse the CSV string into a format that D3 can work with
+var dataset = d3.csvParse(csvString);
+
+
   
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")  // World shape
   //.defer(d3.csv, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_gpsLocSurfer.csv") // Position of circles
   //.defer(d3.csv, "https://kr3325003.github.io/data_gpsLocSurfer3.html") // Position of circles
   //.defer(d3.csv, "./data_gpsLocSurfer3.html") // Position of circles
-  .defer(d3.csv, dataSet) // Position of circles
+  .defer(d3.csv, dataset) // Position of circles
   .await(ready);
 
 function ready(error, dataGeo, data) {
