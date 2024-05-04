@@ -33,7 +33,7 @@ var csvString = `homelat,homelon,homecontinent,n
 var dataset = d3.csvParse(csvString);
 
 // Call the ready function directly with the parsed dataset
-ready(null, dataset);
+ready(null, dataGeo, dataset);
   
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")  // World shape
