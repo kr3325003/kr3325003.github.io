@@ -32,7 +32,8 @@ var csvString = `homelat,homelon,homecontinent,n
 // Parse the CSV string into a format that D3 can work with
 var dataset = d3.csvParse(csvString);
 
-
+// Call the ready function directly with the parsed dataset
+ready(null, dataset);
   
 d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")  // World shape
