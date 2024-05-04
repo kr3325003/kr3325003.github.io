@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <meta charset="utf-8">
 
 <!-- Load d3.js and the geo projection plugin -->
@@ -30,7 +30,8 @@ d3.queue()
   .defer(d3.json, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson")  // World shape
   //.defer(d3.csv, "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_gpsLocSurfer.csv") // Position of circles
   //.defer(d3.csv, "https://kr3325003.github.io/data_gpsLocSurfer3.html") // Position of circles
-  .defer(d3.csv, dataSet) // Position of circles
+  .defer(d3.csv, "./data_gpsLocSurfer3.html") // Position of circles
+  //.defer(d3.csv, dataSet) // Position of circles
   .await(ready);
 
 function ready(error, dataGeo, data) {
